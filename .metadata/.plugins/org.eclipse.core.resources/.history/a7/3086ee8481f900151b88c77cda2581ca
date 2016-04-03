@@ -1,0 +1,28 @@
+package google.map; 
+
+
+
+
+import android.os.Bundle;
+
+public class MActivity extends FragmentActivity{
+
+private GoogleMap map;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_map);
+
+        map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
+                .getMap();
+
+        double lat = 6.796396;
+        double longi = 79.877823;
+        final LatLng HAMBURG = new LatLng(lat,longi);
+        Marker hamburg = map.addMarker(new MarkerOptions().position(HAMBURG)
+                .title("Hamburg"));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(HAMBURG, 15));
+
+
+    }
